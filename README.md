@@ -74,3 +74,71 @@ Authenticate:
 ```bash
 gcloud auth application-default login
 
+Enable required APIs:
+
+gcloud services enable \
+  compute.googleapis.com \
+  servicenetworking.googleapis.com \
+  sqladmin.googleapis.com \
+  secretmanager.googleapis.com
+
+⚙️ Configuration
+
+You can configure variables in two ways:
+
+Option 1 (Recommended): Environment Variables
+export TF_VAR_project_id="your-gcp-project-id"
+export TF_VAR_region="us-central1"
+export TF_VAR_db_password="your-secure-password"
+
+Option 2: Local terraform.tfvars (Do Not Commit)
+project_id  = "your-gcp-project-id"
+region      = "us-central1"
+db_password = "your-secure-password"
+
+🚀 Deployment Steps
+
+Navigate to the desired environment:
+
+cd envs/dev
+
+
+Initialize Terraform:
+
+terraform init
+
+
+Review execution plan:
+
+terraform plan
+
+
+Apply infrastructure:
+
+terraform apply
+
+
+Confirm with yes when prompted.
+
+📤 Outputs
+
+After successful deployment, Terraform outputs:
+
+Cloud SQL Private IP address
+
+You can verify resources in the Google Cloud Console:
+
+VPC Network
+
+Cloud SQL
+
+Secret Manager
+
+🔄 Destroy Infrastructure
+
+To remove all provisioned resources:
+
+terraform destroy
+
+
+Always review the destroy plan carefully before confirming.
